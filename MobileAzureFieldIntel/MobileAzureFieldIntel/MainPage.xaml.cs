@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MobileAzureFieldIntel.ViewModel;
 using Xamarin.Forms;
 
 namespace MobileAzureFieldIntel
 {
     public partial class MainPage : ContentPage
     {
+        readonly MainViewModel vm;
         public MainPage()
         {
+           vm=new MainViewModel();
+            BindingContext = vm;
             InitializeComponent();
         }
     }

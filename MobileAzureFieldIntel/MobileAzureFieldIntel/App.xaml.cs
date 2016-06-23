@@ -13,7 +13,7 @@ namespace MobileAzureFieldIntel
         {
             InitializeComponent();
 
-            MainPage = new MobileAzureFieldIntel.MainPage();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
