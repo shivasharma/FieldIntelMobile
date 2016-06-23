@@ -22,6 +22,11 @@ namespace MobileAzureFieldIntel.Services
                {
                     Name = "Keshab",
                    Department = "Sales"
+               },
+               new Employee
+               {
+                    Name = "John",
+                   Department = "Marketing"
                }
 
            };
