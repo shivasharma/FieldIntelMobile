@@ -1,4 +1,6 @@
-﻿using MobileAzureFieldIntel.ViewModel;
+﻿using System;
+using MobileAzureFieldIntel.View;
+using MobileAzureFieldIntel.ViewModel;
 using Xamarin.Forms;
 
 namespace MobileAzureFieldIntel
@@ -11,6 +13,11 @@ namespace MobileAzureFieldIntel
            vm=new MainViewModel();
             BindingContext = vm;
             InitializeComponent();
+        }
+
+        private async void Button_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddEmployee());
         }
     }
 }

@@ -1,22 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using MobileAzureFieldIntel.Model;
-using MobileAzureFieldIntel.Services;
+using RestClient.Client;
+using RestClient.Models;
 using Xamarin.Forms;
 
-namespace MobileAzureFieldIntel.ViewModel
+namespace RestClient.ViewModels
 {
-   public class MainViewModel: INotifyPropertyChanged
+    public class TasksViewModel : INotifyPropertyChanged
     {
+
         private List<Employee> _employeeList;
+         private GenericRestClient<Employee> _genericRestClient;
         private Employee _selectedTask;
-       private EmployeeService _employeeService;
-        public List<Employee> EmployeeList
+
+        public List<Employee> EmployeesList
         {
             get { return _employeeList; }
             set
@@ -25,36 +26,36 @@ namespace MobileAzureFieldIntel.ViewModel
                 OnPropertyChanged();
             }
         }
+
         public Employee SelectedTaskModel
         {
             get { return _selectedTask; }
-            set
-            {
+            set {
                 _selectedTask = value;
                 OnPropertyChanged();
             }
         }
-        public Command PostCommand
+       public  Command PostCommand
         {
-            get
-            {
-                return new Command(async () => await _employeeService.PostEmployeeAsync(SelectedTaskModel));
-            }
-
+           get
+           {
+               return new Command(async()=>await _genericRestClient.PostAsync(SelectedTaskModel));
+           }
+            
         }
-        public MainViewModel()
+        public TasksViewModel()
         {
-            _employeeService = new EmployeeService();
-            Initialize();
-        }
 
-        public async Task Initialize()
-        {
-           
-            EmployeeList = await _employeeService.GetEmployeesListAsync();
+            _genericRestClient = new GenericRestClient<Employee>();
 
+            DownloadDataAsync();
         }
 
+        public async Task DownloadDataAsync()
+        {
+
+          var  Tasks = await _genericRestClient.GetAsync();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

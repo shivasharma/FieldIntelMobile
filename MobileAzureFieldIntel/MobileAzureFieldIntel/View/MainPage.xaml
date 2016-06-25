@@ -4,7 +4,9 @@
              xmlns:local="clr-namespace:MobileAzureFieldIntel"
              x:Class="MobileAzureFieldIntel.MainPage">
 
-  
+  <StackLayout Orientation="Vertical">
+    <Button Text="Add new Employee" Clicked="Button_OnClicked"></Button>
+ 
  <ListView  x:Name="MyList" ItemsSource="{Binding EmployeeList}" HasUnevenRows="True">
     <ListView.ItemTemplate>
       <DataTemplate>
@@ -17,9 +19,5 @@
       </DataTemplate>
     </ListView.ItemTemplate>
   </ListView>
-
- 
-
- 
-
+  </StackLayout>
 </ContentPage>
