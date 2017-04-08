@@ -48,9 +48,9 @@ namespace MobileAzureFieldIntel.Services
 
        public async Task PostEmployeeAsync(Employee employee)
        {
-           var client=new RestClient<Employee>();
-           var employeeList = await client.PostAsync(employee);
-           
+          
+          await _genericRestClient.PostAsync(employee);
+         
        }
     }
 }

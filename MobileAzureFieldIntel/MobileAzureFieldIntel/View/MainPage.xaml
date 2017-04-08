@@ -2,11 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MobileAzureFieldIntel"
-             x:Class="MobileAzureFieldIntel.MainPage">
+             x:Class="MobileAzureFieldIntel.MainPage"
+             xmlns:viewModel="clr-namespace:MobileAzureFieldIntel.ViewModel;assembly=MobileAzureFieldIntel">
+  
+  <ContentPage.BindingContext>
+    <viewModel:MainViewModel/>
+  </ContentPage.BindingContext>
 
-  <StackLayout Orientation="Vertical">
-    <Button Text="Add new Employee" Clicked="Button_OnClicked"></Button>
- 
+  <StackLayout Orientation="Vertical" Padding="30" Spacing="10" >
+    <Image Source="logo.png" Aspect="AspectFill" x:Name="ImagLogo"></Image>
+    <Button Text="Add new Employee" Clicked="NavigateToAddPage"></Button>
  <ListView  x:Name="MyList" ItemsSource="{Binding EmployeeList}" HasUnevenRows="True">
     <ListView.ItemTemplate>
       <DataTemplate>

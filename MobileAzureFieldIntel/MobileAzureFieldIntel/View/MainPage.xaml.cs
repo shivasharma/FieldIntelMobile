@@ -7,15 +7,15 @@ namespace MobileAzureFieldIntel
 {
     public partial class MainPage : ContentPage
     {
-        readonly MainViewModel vm;
+       // readonly MainViewModel vm;
         public MainPage()
         {
-           vm=new MainViewModel();
-            BindingContext = vm;
+          // vm=new MainViewModel();
+           // BindingContext = vm;
             InitializeComponent();
         }
 
-        private async void Button_OnClicked(object sender, EventArgs e)
+        private async void NavigateToAddPage(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddEmployee());
         }

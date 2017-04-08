@@ -15,7 +15,7 @@ namespace Plugin.RestClient
     public class RestClient<T>
     {
       //  private const string WebServiceUrl = "http://localhost:64980/api/Employees";
-        private const string WebServiceUrl = "http://employeesdirectory.azurewebsites.net/api/Employees/";
+        private const string WebServiceUrl = "http://fieldintel.azurewebsites.net/api/Employees";
 
         public async Task<List<T>> GetAsync()
         {

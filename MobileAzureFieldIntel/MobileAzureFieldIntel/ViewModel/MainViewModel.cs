@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using MobileAzureFieldIntel.Model;
 using MobileAzureFieldIntel.Services;
 using Xamarin.Forms;
+using Android.App;
+using Android.OS;
+using Debug = System.Diagnostics.Debug;
 
 namespace MobileAzureFieldIntel.ViewModel
 {
@@ -16,7 +19,7 @@ namespace MobileAzureFieldIntel.ViewModel
         private List<Employee> _employeeList;
         private Employee _selectedTask;
        private EmployeeService _employeeService;
-        public List<Employee> EmployeeList
+        public List<Employee> EmployeeList            
         {
             get { return _employeeList; }
             set
@@ -34,14 +37,20 @@ namespace MobileAzureFieldIntel.ViewModel
                 OnPropertyChanged();
             }
         }
-        public Command PostCommand
-        {
-            get
-            {
-                return new Command(async () => await _employeeService.PostEmployeeAsync(SelectedTaskModel));
-            }
+        //public Command AddEmployee
+        //{
+            
+        //    get
+        //    {
+                
+        //         return new Command(async () => await _employeeService.PostEmployeeAsync(SelectedTaskModel));
+              
+        //    }
 
-        }
+        //}
+
+
+
         public MainViewModel()
         {
             _employeeService = new EmployeeService();
@@ -54,10 +63,7 @@ namespace MobileAzureFieldIntel.ViewModel
             EmployeeList = await _employeeService.GetEmployeesListAsync();
 
         }
-
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

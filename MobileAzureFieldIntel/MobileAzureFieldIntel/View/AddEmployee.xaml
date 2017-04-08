@@ -1,18 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MobileAzureFieldIntel.View.AddEmployee">
-  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+             x:Class="MobileAzureFieldIntel.View.AddEmployee"
+             xmlns:viewModel="clr-namespace:MobileAzureFieldIntel.ViewModel;assembly=MobileAzureFieldIntel">
+  <ContentPage.BindingContext>
+    <viewModel:MainViewModel/>
+  </ContentPage.BindingContext>
 
-  <StackLayout Orientation="Vertical" Spacing="18">
-    <Label Text="Title"></Label>
-    <Entry Text="{Binding SelectedTaskModel.Name, Mode=TwoWay}"></Entry>
+  <ScrollView>
+    <StackLayout Orientation="Vertical" Padding="30" Spacing="10">
+      <StackLayout Orientation="Horizontal" Spacing="5">
+        <Label Text="Title" FontSize="15" VerticalOptions="End"/>
+        <Entry Text="{Binding Name, Mode=TwoWay}" x:Name="EmployeeName" HorizontalOptions="FillAndExpand"/>
+      </StackLayout>
 
-    <Label Text="Department"></Label>
-    <Entry Text="{Binding SelectedTaskModel.Department, Mode=TwoWay}"></Entry>
+      <StackLayout Orientation="Horizontal" Spacing="5">
+        <Label Text="Department" FontSize="15" VerticalOptions="End"/>
+        <Entry Text="{Binding Department, Mode=TwoWay}" x:Name="Department" HorizontalOptions="FillAndExpand"/>
+      </StackLayout>
 
-    <Button Text="Post Task" Command="{Binding PostCommand}"></Button>
-  </StackLayout>
+
+
+      <!--<Button Text="Post Task" Command="{Binding AddEmployee}"></Button>-->
+      <Button Text="Add new Employee test" Clicked="Button_OnClicked"></Button>
+    </StackLayout>
+  </ScrollView>
 </ContentPage>
 
 
